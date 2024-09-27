@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, #616161, #000000);
+}
+
+.clock {
+    width: 80vmin;
+    height: 80vmin;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 30px #00000080;
+    background-color: #292929;
+    background: radial-gradient(circle, #000000e6, #1a1a1a);
+    box-shadow: 0 0 50px #000000b3, inset 0 0 30px #ffffff1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hand {
+    width: 50%;
+    height: 6px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 0%; 
+    transform: rotate(0deg);
+    border-radius: 6px;
+    transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+    z-index: 2; 
+}
+
+.hour-hand {
+    width: 35%;
+    height: 8px;
+    background-color: #ff4545;
+}
+
+.minute-hand {
+    width: 45%;
+    height: 6px;
+    background-color: #00ffae;
+}
+
+.second-hand {
+    width: 50%;
+    height: 4px;
+    background-color: #ffdc00;
+}
+
+.clock-face::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; 
+}
+
+
+
+
+
+.number {
+    position: absolute;
+    font-size: 2.5vmin;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+}
+
+
+.number[data-hour="12"] {
+    top: 5%;
+    left: 50%;
+}
+
+.number[data-hour="3"] {
+    top: 50%;
+    left: 95%;
+}
+
+.number[data-hour="6"] {
+    top: 95%;
+    left: 50%;
+}
+
+.number[data-hour="9"] {
+    top: 50%;
+    left: 5%;
+}
+.second-hand, .minute-hand, .hour-hand {
+    transform-origin: 0% 0%; 
+    transition: transform 0.05s ease-in-out;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .clock {
+        width: 70vmin;
+        height: 70vmin;
+    }
+
+    .number {
+        font-size: 2vmin;
+    }
+}
+
+@media (max-width: 480px) {
+    .clock {
+        width: 80vmin;
+        height: 80vmin;
+        border: 4px solid #fff;
+    }
+    .minute-hand, .hour-hand{
+        height: 4px;
+    }
+
+    .number {
+        font-size: 8.8vmin;
+    }
+}
+@media (max-width: 380px) {
+    .clock {
+        width: 95vmin;
+        height: 95vmin;
+        border: 4px solid #fff;
+    }
+    .minute-hand, .hour-hand{
+        height: 4px;
+    }
+
+    .number {
+        font-size: 8.8vmin;
+    }
+}
