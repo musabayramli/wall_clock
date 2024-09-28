@@ -26,27 +26,28 @@ function setClock() {
 
     const seconds = now.getSeconds();
     const minutes = now.getMinutes() + seconds / 60;
-    const hours = now.getHours() % 12 + minutes / 60  + seconds / 3600;
+    const hours = now.getHours() % 12 + minutes / 60 + seconds / 3600;
 
     const secondsDegrees = seconds * 360 / 60 - 90;
+    const minutesDegrees = minutes * 360 / 60 - 90;
+    const hoursDegrees = hours * 360 / 12 - 90;
 
-    const minutesDegrees = minutes * 360 / 60 - 90 ;
-
-
-    const hoursDegrees = hours * 360 / 12 - 90 ; 
+    if (seconds === 0) {
+        secondHand.style.transition = 'none'; 
+    } else {
+        secondHand.style.transition = 'transform 0.05s ease-in-out'; 
+    }
 
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
-    const displayHour = now.getHours() % 12 || 12; 
-    const ampm = now.getHours() >= 12 ? 'PM' : 'AM'; 
-
     tickSound.play();
 }
+
 
 createNumbers(); 
 
 
-setInterval(setClock, 1000);
 setClock();
+setInterval(setClock, 1000);
