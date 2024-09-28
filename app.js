@@ -42,12 +42,22 @@ function setClock() {
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
+
     tickSound.play();
 }
 
 
-createNumbers(); 
+window.addEventListener('DOMContentLoaded', function () {
+    createNumbers();
+    setClock();
+    setInterval(setClock, 1000); 
 
+    if (localStorage.getItem('soundEnabled') === 'true') {
+        tickSound.play();
+    }
+});
 
-setClock();
-setInterval(setClock, 1000);
+window.addEventListener('click', function () {
+    tickSound.play();
+    localStorage.setItem('soundEnabled', 'true'); 
+}, { once: true }); 
